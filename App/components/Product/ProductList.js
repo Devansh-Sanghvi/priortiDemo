@@ -4,13 +4,7 @@ StyleSheet,
 View,
 Text,
 ListView,
-Image,
-TouchableOpacity,
-DatePickerIOS,
-DatePickerAndroid,
-Modal,
-Platform,
-AsyncStorage
+Image
 } from 'react-native';
 import ProductListItem from './ProductListItem';
 import {connect} from 'react-redux';
@@ -74,9 +68,11 @@ const {loading}=this.props;
 
  if(this.dataSource.getRowCount() > 0)
 {
- console.error(this.dataSource.getRowCount());
 
-return   (<ListView enableEmptySections
+return   (<ListView
+
+                   key={this.props.productList}
+                   enableEmptySections
                     dataSource={this.dataSource}
                     renderRow={this.renderRow.bind(this)}
                     renderSeparator={(rowId) => <View key={rowId} style={separator}  />}
