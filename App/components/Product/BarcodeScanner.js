@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import {Spinner,StatusbarDark} from '../common'
@@ -14,6 +13,7 @@ constructor(props)
   {
 
        super(props);
+       count=0;
 
   }
 
@@ -22,11 +22,14 @@ constructor(props)
 // this function is called when first the camera reads the barcode
 onBarCodeRead = (e) =>
 {
+if(count==0)
+{
 
-  this.props.fetchProductDetails(e.data)
-  Actions.pop();
-  this.props.fetchProductList()
-
+this.props.fetchProductDetails(e.data);
+count=count+1;
+this.props.fetchProductList();
+Actions.pop();
+}
 }
 
 
