@@ -24,7 +24,7 @@ class Product {
 export const getAllProducts = () => {
   const allRecords = realm.objects(Product.schema.name)
   obje=[];
-  for(let i=0;i<=allRecords.length;i++)
+  for(let i=0;i<allRecords.length;i++)
   {
     obje.push(allRecords[i]);
   }
